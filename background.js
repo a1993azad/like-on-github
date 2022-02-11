@@ -17,7 +17,10 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
 
             return true;
         },
-
+        gotoOptions:function(){
+            chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
+            return true;
+        },
         /**
          * Get active tab
          *
