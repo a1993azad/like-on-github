@@ -18,14 +18,21 @@
     "permissions": [
         "storage",
         "tabs",
+        "activeTab",
+        "tabs",
         "http://*/*",
         "https://*/*"
     ],
     "browser_action": {
         "default_title": "Like on GitHub",
-        "default_icon": "assets/icons/standard-16.png"
+        "default_icon": "assets/icons/standard-16.png",
+        "default_popup": "popup.html"
     },
     "manifest_version": 2,
     "homepage_url": "http://github.com/idnan",
-    "options_page": "options.html"
+    "options_page": "options.html",
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+      }
 }

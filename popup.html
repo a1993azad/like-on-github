@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Link href="assets/css/inject.css" rel="stylesheet"/>
+    <script src="assets/lib/jquery.js" type="text/javascript"></script>
+    <script src="assets/lib/keymaster.js" type="text/javascript"></script>
+    <script src="like-on-github.js" type="text/javascript"></script>
+  </head>
+  <body class="logh popup">
+  
+      <h3>Like On GitHub</h3>
+      <div class="clogl">
+        <div class="lbllogh">
+          <span class="reqlogh">*</span>Title (label for the link)
+        </div>
+        <input type="text" name="title" />
+      </div>
+      <div class="clogl">
+        <input type="hidden" name="url" />
+      </div>
+      <div class="clogl">
+        <div class="lbllogh">
+          <span class="reqlogh">*</span>Comment (commit message)
+        </div>
+        <textarea name="comment"></textarea>
+      </div>
+      <div id="action-btns">
+        <div class="btn btn-primary" id="logh_btn_save">Save</div>
+        <div class="btn" id="logh_btn_cancel">Cancel</div>
+      </div>
+      <div class="elogh hlogh">
+        <p></p>
+      </div>
+      <button id="go-to-options" type="button">Go to options</button>
+   
+  </body>
+</html>

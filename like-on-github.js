@@ -119,6 +119,7 @@
         '<div class="elogh hlogh">' +
         '<p></p>' +
         '</div>' +
+        '<button id="go-to-options" type="button">Go to options</button>'+
         '</div>',
 
         // References to DOM elements
@@ -361,6 +362,21 @@
             loadExtension: function ($container) {
                 appendLikeOnGithubHtml($container);
                 this.bindUI();
+                if($('.logh').hasClass('popup')){
+                    $(Config.EX_INPUT_TITLE).focus();
+
+                    // get the active tab
+                    ActiveTab.get(function (activeTab) {
+
+                        if (!activeTab) {
+                            return false;
+                        }
+
+                        $(Config.EX_INPUT_TITLE).val(activeTab.title);
+                        $(Config.EX_INPUT_URL).val(activeTab.url);
+                        $(Config.EX_INPUT_COMMENT).val('New Link: ' + activeTab.title);
+                    });
+                }
             },
 
             /**
@@ -368,6 +384,11 @@
              */
             bindUI: function () {
 
+                document.querySelector('#go-to-options').addEventListener('click', function() {
+                   chrome.extension.sendMessage({type: 'gotoOptions'})
+
+                    
+                  });
                 // close on escape key
                 $(document).on('keyup', function (e) {
                     if (e.keyCode === Config.ESCAPE_KEY) {
@@ -413,8 +434,11 @@
 
                 // master key binding for which extension will be enabled
                 key(Config.MASTER_KEY, function () {
-                    Helper.showPopup();
+                    if(!$('.logh').hasClass('popup')){
 
+                        Helper.showPopup();
+    
+                    }
                     $(Config.EX_INPUT_TITLE).focus();
 
                     // get the active tab
@@ -434,6 +458,8 @@
     }
 
     $(document).ready(function () {
+     
+
         var likeOnGithub = new LikeOnGithub();
         likeOnGithub.loadExtension(Config.EX_CONTAINER_BODY);
     });
